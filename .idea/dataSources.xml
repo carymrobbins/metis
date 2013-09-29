@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="3928028779">
-    <data-source source="LOCAL" name="Rails metis: development" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="8b32d326-e0ff-4f9d-b2d0-6772438bd36a">
+  <component name="DataSourceManagerImpl" format="xml" hash="1412013008">
+    <data-source source="LOCAL" name="Rails metis: development" product="SQLite" version="3.7.2" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="c14fd166-f0be-4935-82da-199b0a8a53e2">
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/db/development.sqlite3</jdbc-url>
       <libraries>
@@ -9,7 +9,7 @@
           <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/xerial-sqlite-license.txt</url>
         </library>
         <library>
-          <url>jar://$USER_HOME$/.RubyMine50/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar!/</url>
+          <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/sqlite-jdbc-3.7.2.jar</url>
         </library>
       </libraries>
     </data-source>
