@@ -1,4 +1,5 @@
 Metis::Application.routes.draw do
+  resources :lists
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home', via: 'get'
