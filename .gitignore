@@ -16,3 +16,7 @@ rerun.txt
 pickle-email-*.html
 .project
 .idea
+# Certs and keys
+*.crt
+*.key
+*.p12

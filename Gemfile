@@ -40,6 +40,9 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '3.0.1'
 
+# Use Intuit API
+gem 'aggcat'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
