@@ -15,19 +15,26 @@ onLoad ->
     self = $(this)
     next_id = self.data('next_id') or 0
     self.data('next_id', next_id + 1)
-    new_row = $('<tr><td><input/></td></tr>')
+    # TODO: Refactor to reuse this block in this file and the show view.
+    new_row = $("""
+      <tr>
+        <td>
+          <input type="text" class="list-item-field" autocomplete="off" />
+          <a class="close delete-item-button">&times;</a>
+        </td>
+      </tr>
+    """)
     self.closest('tr').before(new_row)
     input = new_row.find('input').attr(
-      type: 'text',
       name: 'new-item-' + next_id,
-      class: 'list-item-field',
-      autocomplete: 'off',
     ).trigger('focus')
 
   if $('.list-item-field').length == 0
     add_list_item_button.trigger('click')
 
-  $('form.edit_list').on 'keydown', '.list-item-field', (event) ->
+  edit_list_form = $('form.edit_list')
+
+  edit_list_form.on 'keydown', '.list-item-field', (event) ->
     self = $(this)
     this_row = self.closest('tr')
     prev_item = this_row.prev('tr').find('.list-item-field')
@@ -49,3 +56,22 @@ onLoad ->
       prev_item.trigger('focus') if prev_item.length
     if event.which == KEY.DOWNARROW
       next_item.trigger('focus') if next_item.length
+
+  edit_list_form.on 'click', '.delete-item-button', (event) ->
+    $(this).closest('tr').detach()
+
+  $('.list-index').on 'click', '.delete-item-button', (event) ->
+    event.preventDefault()
+    self = $(this)
+    # TODO: Replace with modal.
+    if confirm("Do you really want to delete #{self.attr('data_name')}?")
+      req = $.ajax(
+        url: self.attr('href'),
+        type: 'post',
+        dataType: 'json',
+        data: {_method: 'delete'},
+      )
+      req.done (data) ->
+        self.closest('tr').detach()
+      req.fail ->
+        alert "Delete failed!"

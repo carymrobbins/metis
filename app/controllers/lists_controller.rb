@@ -42,6 +42,11 @@ class ListsController < ApplicationController
     redirect_to action: :index
   end
 
+  def destroy
+    @list = current_user.lists.find(params[:id])
+    render json: @list.destroy
+  end
+
   private
 
     def list_params

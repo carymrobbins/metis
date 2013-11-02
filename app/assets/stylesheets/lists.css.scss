@@ -6,19 +6,19 @@
   margin-top: 10px;
 }
 
-.clickable a {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
 .list-item-field {
   outline: none;
   border: none !important;
   box-shadow: none !important;
   margin-bottom: 0 !important;
+  width: 89%;
 }
 
 .top-buttons {
   margin-bottom: 20px;
+}
+
+.delete-item-button {
+  width: 10%;
+  text-align: right;
 }

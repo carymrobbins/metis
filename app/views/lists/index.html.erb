@@ -12,12 +12,17 @@
 </div>
 <div class="row">
   <div class="span8 offset2">
-    <table class="table">
+    <table class="list-index table">
       <tbody>
       <% if @lists.each do |list| %>
         <tr>
-          <td class="clickable">
+          <td>
             <%= link_to list.name, list %>
+            <%= link_to list,
+                        data_name: list.name,
+                        class: 'close delete-item-button' do %>
+              &times;
+            <% end %>
           </td>
         </tr>
       <% end.empty? %>
