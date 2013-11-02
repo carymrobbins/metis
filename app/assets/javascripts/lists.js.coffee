@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 onLoad ->
-
   $('form.edit_list').on 'keydown', (event) ->
     if event.which == KEY.ENTER
       event.preventDefault()
@@ -24,6 +23,9 @@ onLoad ->
       class: 'list-item-field',
       autocomplete: 'off',
     ).trigger('focus')
+
+  if $('.list-item-field').length == 0
+    add_list_item_button.trigger('click')
 
   $('form.edit_list').on 'keydown', '.list-item-field', (event) ->
     self = $(this)

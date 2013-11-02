@@ -10,20 +10,25 @@
                 class: 'btn btn-large btn-success' %>
   </div>
 </div>
-<table class="table">
-  <tbody>
-    <% if @lists.each do |list| %>
-      <tr>
-        <td class="clickable">
-          <%= link_to list.name, list %>
-        </td>
-      </tr>
-    <% end.empty? %>
-      <tr>
-        <td>
-          <h4>You haven't created any lists!</h4>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row">
+  <div class="span8 offset2">
+    <table class="table">
+      <tbody>
+      <% if @lists.each do |list| %>
+        <tr>
+          <td class="clickable">
+            <%= link_to list.name, list %>
+          </td>
+        </tr>
+      <% end.empty? %>
+        <tr>
+          <td>
+            <h4>You haven't created any lists!</h4>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

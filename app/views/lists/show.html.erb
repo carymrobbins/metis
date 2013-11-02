@@ -1,5 +1,10 @@
 <% provide(:title, "List - #{@list.name}") %>
-<h1><%= %></h1>
+<div class="top-buttons row">
+  <div class="span3 offset3">
+    <%= link_to 'Back to lists', lists_path,
+                class: 'btn btn-primary' %>
+  </div>
+</div>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@list) do |f| %>
@@ -29,8 +34,9 @@
             </tr>
         </tbody>
       </table>
-
-      <%= f.submit 'Save list', class:'btn btn-large btn-success' %>
+      <div class="center">
+        <%= f.submit 'Save list', class:'btn btn-large btn-success' %>
+      </div>
     <% end %>
   </div>
 </div>
