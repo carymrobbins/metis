@@ -7,10 +7,10 @@
   <div class="span4">
     <%= link_to 'New List', new_list_path,
                 id: 'new-list-button',
-                class: 'btn btn-large btn-success h1-margin' %>
+                class: 'btn btn-large btn-success' %>
   </div>
 </div>
-<table class="table table-hover">
+<table class="table">
   <tbody>
     <% if @lists.each do |list| %>
       <tr>

@@ -8,6 +8,28 @@
       <%= f.label :name %>
       <%= f.text_field :name %>
 
+      <table class="table">
+        <tbody>
+          <% @list.list_items.each do |item| %>
+            <tr>
+              <td>
+                <%= f.text_field "item-#{item.id}",
+                                 value: item.name,
+                                 class: 'list-item-field',
+                                 autocomplete: 'off' %>
+              </td>
+            </tr>
+          <% end %>
+            <tr>
+              <td>
+                <%= link_to 'Add item', '#',
+                            id: 'add-list-item-button',
+                            class: 'btn btn-info btn-xs' %>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+
       <%= f.submit 'Save list', class:'btn btn-large btn-success' %>
     <% end %>
   </div>
