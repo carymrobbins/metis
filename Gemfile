@@ -44,7 +44,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'aggcat'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development

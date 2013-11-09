@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+APP_PATH=$(dirname $0)
+
+source $APP_PATH/.rvmrc
+
+PID=$(ps aux | grep "nginx\: master" | grep -v "grep" | grep -o "[0-9]*" | head -n1)
+if [ "$PID" != "" ]; then
+    echo "Stopping nginx (PID $PID)..."
+    sudo kill $PID
+fi
+
+echo "Starting nginx..."
+sudo service nginx start
+
+PID=$(ps aux | grep "unicorn_rails master" | grep -v "grep" | grep -o "[0-9]*" | head -n1)
+if [ "$PID" != "" ]; then
+    echo "Stopping unicorn (PID $PID)..."
+    sudo kill $PID
+fi
+
+echo "Installing requirements..."
+bundle update
+bundle install
+
+echo "Compiling rails assets..."
+rake assets:clean
+rake assets:precompile
+
+echo "Migrating the database..."
+RAILS_ENV=production rake db:migrate
+
+
+echo "Starting unicorn..."
+RAILS_ENV=production unicorn_rails -c $APP_PATH/config/unicorn.rb -D
+
