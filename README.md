@@ -1,4 +1,9 @@
+Getting Ready for Development
+-----------------------------
+
 ```bash
+# Install RVM
+\curl -L https://get.rvm.io | bash -s stable
 rvm get head && rvm reload
 rvm install 2.0.0
 rvm get stable
