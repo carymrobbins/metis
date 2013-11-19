@@ -21,3 +21,5 @@ pickle-email-*.html
 *.key
 *.p12
 database.yml
+nginx.conf
+unicorn.rb
