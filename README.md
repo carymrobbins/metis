@@ -12,5 +12,6 @@ rvm use 2.0.0@metis --create --default
 rvm osx-ssl-certs update all
 bundle update
 bundle install
+rake db:setup
 rake db:migrate
 ```

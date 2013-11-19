@@ -8,7 +8,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.datetime :posted_date
       t.datetime :user_date
       t.decimal :amount
-      t.bool :pending
+      t.boolean :pending
 
       t.timestamps
     end
