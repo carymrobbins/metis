@@ -1,0 +1,21 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: metis_devel
+  pool: 5
+  username: pycharm
+  password: pycharm
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: metis_test
+  pool: 5
+  username: pycharm
+  password: pycharm
+  

@@ -20,3 +20,4 @@ pickle-email-*.html
 *.crt
 *.key
 *.p12
+database.yml
