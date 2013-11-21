@@ -46,6 +46,9 @@ gem 'aggcat'
 # Use unicorn as the app server
 gem 'unicorn'
 
+# Model annotation
+gem 'annotate', '2.4.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 
