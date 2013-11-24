@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  customer_id: 
+  institution_id: 
+
+two:
+  customer_id: 
+  institution_id: 

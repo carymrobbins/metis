@@ -36,6 +36,5 @@ task :load_institutions, [:file] => :environment do |t, args|
     from base
     where id not in (select id from updating)
   ", *institutions.flatten]
-  File.write 'out.sql', sql
   ActiveRecord::Base.connection.execute sql
 end

@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
+  def customer
+    Customer.find_by_user_id(self.id) || Customer.try_create(self)
+  end
+
   private
 
     def create_remember_token

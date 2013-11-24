@@ -1,4 +1,7 @@
 Metis::Application.routes.draw do
+  resources :institutions
+  resources :customer_institutions
+  resources :accounts
   resources :lists
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

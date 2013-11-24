@@ -1,0 +1,33 @@
+<% provide(:title, 'My Money') %>
+<div class="row">
+  <div class="span4"></div>
+  <div class="span4">
+    <h1>My Money</h1>
+  </div>
+  <div class="span4">
+    <%= link_to 'Add Bank', new_customer_institution_path,
+                id: 'add-institution-button',
+                class: 'btn btn-large btn-success' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span8 offset2">
+    <table class="bank-index table">
+      <tbody>
+      <% if @customer_institution.each do |ci| %>
+        <tr>
+          <td>
+            <%= link_to ci.name, ci %>
+          </td>
+        </tr>
+      <% end.empty? %>
+        <tr>
+          <td>
+            <h4>You haven't added any banks!</h4>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

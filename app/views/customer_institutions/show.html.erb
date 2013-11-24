@@ -1,0 +1,45 @@
+<% provide(:title, "Bank - #{@customer_institution.name}") %>
+<div class="top-buttons row">
+  <div class="span3 offset3">
+    <%= link_to 'Back to banks', customer_institutions_path,
+                class: 'btn btn-primary' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@customer_institution) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <div class="center">
+        <%= f.submit 'Save bank', class:'btn btn-large btn-success' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="span4"></div>
+  <div class="span4">
+    <h1>Accounts</h1>
+  </div>
+  <div class="span4">
+    <%= link_to 'Sync Now', '#', class: 'btn' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span8 offset2">
+    <table class="accounts table">
+      <tbody>
+      <% @accounts.each do |ci| %>
+        <tr>
+          <td>
+            <%= link_to ci.name, ci %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

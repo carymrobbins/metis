@@ -1,0 +1,18 @@
+<% provide(:title, 'Add Bank') %>
+<h1>Add Bank</h1>
+<div class="row">
+  <div class="span6 offset3">
+    <% if @customer_institution.customer %>
+      <%= form_for(@customer_institution) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+
+        <%= f.submit 'Add bank', class:'btn btn-large btn-success' %>
+      <% end %>
+    <% else %>
+      Sorry, but looks like we have reached our system limit.
+  <% end %>
+  </div>
+</div>
