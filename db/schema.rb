@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124031547) do
+ActiveRecord::Schema.define(version: 20131128090739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20131124031547) do
     t.string   "account_number"
     t.string   "account_nickname"
     t.integer  "display_position"
-    t.integer  "institution_id"
+    t.integer  "institution_id",           limit: 8
     t.string   "description"
     t.decimal  "balance_amount"
     t.datetime "balance_date"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20131124031547) do
     t.datetime "aggr_attempt_date"
     t.string   "aggr_status_code"
     t.string   "currency_code"
-    t.integer  "institution_login_id"
+    t.integer  "institution_login_id",     limit: 8
     t.string   "banking_account_type"
     t.decimal  "available_balance_amount"
     t.datetime "created_at"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20131124031547) do
   add_index "lists", ["name", "user_id"], name: "index_lists_on_name_and_user_id", unique: true, using: :btree
 
   create_table "transactions", force: true do |t|
-    t.integer  "account_id"
+    t.integer  "account_id",                 limit: 8
     t.string   "currency_type"
     t.string   "institution_transaction_id"
     t.string   "payee_name"

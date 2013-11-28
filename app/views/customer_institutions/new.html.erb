@@ -6,8 +6,14 @@
       <%= form_for(@customer_institution) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.label :name %>
+        <%= f.label :bank_name %>
         <%= f.text_field :name %>
+
+        <%= f.label :username %>
+        <%= text_field_tag :username %>
+
+        <%= f.label :password %>
+        <%= password_field_tag :password %>
 
         <%= f.submit 'Add bank', class:'btn btn-large btn-success' %>
       <% end %>
