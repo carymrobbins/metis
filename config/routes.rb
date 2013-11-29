@@ -1,7 +1,9 @@
 Metis::Application.routes.draw do
-  resources :institutions
-  resources :customer_institutions
-  resources :accounts
+  resources :customer_institutions do
+    collection do
+      get 'sync'
+    end
+  end
   resources :lists
   resources :users
   resources :sessions, only: [:new, :create, :destroy]

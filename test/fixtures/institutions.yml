@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: institutions
-#
-#  id           :integer         not null, primary key
-#  name         :string(255)
-#  home_url     :string(255)
-#  phone_number :string(255)
-#  created_at   :datetime
-#  updated_at   :datetime
-#
-
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
@@ -21,3 +9,16 @@ two:
   name: MyString
   home_url: MyString
   phone_number: MyString
+
+# == Schema Information
+#
+# Table name: institutions
+#
+#  id           :integer(8)      not null, primary key
+#  name         :string(255)
+#  home_url     :string(255)
+#  phone_number :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+

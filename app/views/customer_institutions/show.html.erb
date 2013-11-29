@@ -25,18 +25,17 @@
     <h1>Accounts</h1>
   </div>
   <div class="span4">
-    <%= link_to 'Sync Now', '#', class: 'btn' %>
+    <%= link_to 'Sync Now', sync_customer_institutions_path, class: 'btn' %>
   </div>
 </div>
 <div class="row">
   <div class="span8 offset2">
     <table class="accounts table">
       <tbody>
-      <% @accounts.each do |ci| %>
+      <% @accounts.each do |a| %>
         <tr>
-          <td>
-            <%= link_to ci.name, ci %>
-          </td>
+          <td><%= a.account_nickname %></td>
+          <td><%= a.account_number %></td>
         </tr>
       <% end %>
       </tbody>

@@ -68,16 +68,37 @@ class CustomerInstitutionsController < ApplicationController
     render 'new'
   end
 
-  def sync_accounts
+  def sync
     customer_id = current_user.customer.id
     client = Aggcat.scope customer_id
     response = client.accounts
     # TODO: Just supporting banking accounts right now.  Need to update the
     # TODO: schema for credit, loan, etc. fields.
-    data = response[:result][:account_list][:banking_account] || {}
     # Data may be an Array of Hash or a single Hash.  Normalize to an Array.
-    data = [data] unless data.is_a?(Array)
-    Account.upsert data, translation: {:account_id => :id},
+    account_data = Array(response[:result][:account_list][:banking_account])
+    Account.upsert account_data, translation: {:account_id => :id},
                    constants: {customer_id: customer_id}
+    transaction_data = []
+    # Hash of account_id, error_message
+    transaction_errors = {}
+    account_data.each do |row|
+      account_id = row[:account_id]
+      response = client.account_transactions row[:account_id],
+                                             Transaction::SYNC_TIME_RANGE.ago
+      if /20\d/.match response[:status_code]
+        # Data may be an Array of Hash or a single Hash.  Normalize to an Array.
+        transaction_data += Array(
+            response.fetch_nested(:result, :transaction_list,
+                                  :banking_transaction)
+        # Ignore categorization for now, this doesn't work well.
+        # Merge in account_id into the data.
+        ).map{|t| t.except(:categorization).merge(account_id: account_id)}
+      else
+        transaction_errors[account_id] =
+            response.fetch_nested :result, :status, :error_info, :error_message
+      end
+    end
+    Transaction.upsert transaction_data
+    redirect_to action: :index
   end
 end
