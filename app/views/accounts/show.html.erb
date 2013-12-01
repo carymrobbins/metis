@@ -1,0 +1,41 @@
+<% provide(:title, "Account - #{@account.account_nickname}") %>
+<div class="top-buttons row">
+  <div class="span3 offset3">
+    <%= link_to 'Back to accounts', @customer_institution,
+                class: 'btn btn-primary' %>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <h1>Account - <%= @account.account_nickname %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="span12">
+    <h3>Recent Transactions</h3>
+  </div>
+  <div class="span12">
+    <table class="accounts table">
+      <thead>
+        <tr>
+          <td>Payee Name</td>
+          <td>Posted Date</td>
+          <td>System Date</td>
+          <td>Amount</td>
+          <td>Pending</td>
+        </tr>
+      </thead>
+      <tbody>
+      <% @latest_transactions.each do |t| %>
+        <tr>
+          <td><%= t.payee_name %></td>
+          <td><%= t.posted_date.try :strftime, '%m/%d/%y' %></td>
+          <td><%= t.user_date.try :strftime, '%m/%d/%y' %></td>
+          <td><%= number_to_currency t.amount %></td>
+          <td><%= t.pending ? 'Pending' : '-' %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -20,6 +20,7 @@ two:
   amount: 9.99
   pending: 
 
+
 # == Schema Information
 #
 # Table name: transactions
@@ -35,5 +36,6 @@ two:
 #  pending                    :boolean
 #  created_at                 :datetime
 #  updated_at                 :datetime
+#  customer_id                :integer
 #
 

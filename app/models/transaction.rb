@@ -19,4 +19,5 @@ end
 #  pending                    :boolean
 #  created_at                 :datetime
 #  updated_at                 :datetime
+#  customer_id                :integer
 #

@@ -98,7 +98,7 @@ class CustomerInstitutionsController < ApplicationController
             response.fetch_nested :result, :status, :error_info, :error_message
       end
     end
-    Transaction.upsert transaction_data
+    Transaction.upsert transaction_data, constants: {customer_id: customer_id}
     redirect_to action: :index
   end
 end

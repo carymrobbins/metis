@@ -34,7 +34,7 @@
       <tbody>
       <% @accounts.each do |a| %>
         <tr>
-          <td><%= a.account_nickname %></td>
+          <td><%= link_to a.account_nickname, a %></td>
           <td><%= a.account_number %></td>
         </tr>
       <% end %>
