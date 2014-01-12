@@ -1,7 +1,7 @@
 class Transaction < ActiveRecord::Base
   belongs_to :account
 
-  SYNC_TIME_RANGE = 1.year
+  SYNC_TIME_RANGE = 1.month
 end
 
 # == Schema Information

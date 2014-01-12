@@ -1,0 +1,7 @@
+<%= link_to 'Sync Now', sync_customer_institutions_path,
+            class: 'btn sync-btn' %>
+<div class="modal hide sync-modal" data-keyboard="false" data-backdrop="static">
+  <h3>Syncing accounts.</h3>
+  <h2>Please wait a few moments.</h2>
+  <%= image_tag 'loading.gif' %>
+</div>

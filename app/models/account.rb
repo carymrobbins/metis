@@ -2,6 +2,17 @@ class Account < ActiveRecord::Base
   belongs_to :customer
   belongs_to :institution
   alias_attribute :account_id, :id
+
+  def latest_transactions
+    @latest_transactions ||= Transaction.where(
+        account_id: id
+    ).order('user_date desc').take(10)
+  end
+
+  def customer_institution
+    @customer_institution ||= CustomerInstitution.find_by_institution_id(
+        institution_id)
+  end
 end
 
 # == Schema Information

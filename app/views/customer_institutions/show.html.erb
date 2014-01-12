@@ -1,8 +1,11 @@
 <% provide(:title, "Bank - #{@customer_institution.name}") %>
 <div class="top-buttons row">
-  <div class="span3 offset3">
+  <div class="offset3 span3">
     <%= link_to 'Back to banks', customer_institutions_path,
                 class: 'btn btn-primary' %>
+  </div>
+  <div class="span3">
+    <%= render 'layouts/sync_button' %>
   </div>
 </div>
 <div class="row">
@@ -24,9 +27,6 @@
   <div class="span4">
     <h1>Accounts</h1>
   </div>
-  <div class="span4">
-    <%= link_to 'Sync Now', sync_customer_institutions_path, class: 'btn' %>
-  </div>
 </div>
 <div class="row">
   <div class="span8 offset2">
@@ -36,9 +36,11 @@
         <tr>
           <td><%= link_to a.account_nickname, a %></td>
           <td><%= a.account_number %></td>
+          <td><%= number_to_currency a.balance_amount %></td>
         </tr>
       <% end %>
       </tbody>
     </table>
   </div>
 </div>
+

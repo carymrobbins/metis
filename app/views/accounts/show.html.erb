@@ -1,13 +1,17 @@
-<% provide(:title, "Account - #{@account.account_nickname}") %>
+<% title = "#{@account.institution.name} - #{@account.account_nickname}" %>
+<% provide(:title, title) %>
 <div class="top-buttons row">
   <div class="span3 offset3">
-    <%= link_to 'Back to accounts', @customer_institution,
+    <%= link_to 'Back to accounts', @account.customer_institution,
                 class: 'btn btn-primary' %>
+  </div>
+  <div class="span3">
+    <%= render 'layouts/sync_button' %>
   </div>
 </div>
 <div class="row">
   <div class="span12">
-    <h1>Account - <%= @account.account_nickname %></h1>
+    <h1><%= title %></h1>
   </div>
 </div>
 <div class="row">
@@ -18,20 +22,20 @@
     <table class="accounts table">
       <thead>
         <tr>
-          <td>Payee Name</td>
-          <td>Posted Date</td>
-          <td>System Date</td>
-          <td>Amount</td>
-          <td>Pending</td>
+          <th>Payee Name</th>
+          <th>Posted Date</th>
+          <th>System Date</th>
+          <th>Amount</th>
+          <th>Pending</th>
         </tr>
       </thead>
       <tbody>
-      <% @latest_transactions.each do |t| %>
+      <% @account.latest_transactions.each do |t| %>
         <tr>
-          <td><%= t.payee_name %></td>
+          <td class="payee"><%= t.payee_name.html_safe %></td>
           <td><%= t.posted_date.try :strftime, '%m/%d/%y' %></td>
           <td><%= t.user_date.try :strftime, '%m/%d/%y' %></td>
-          <td><%= number_to_currency t.amount %></td>
+          <td><%= number_to_currency -t.amount, negative_format: '(%u%n)' %></td>
           <td><%= t.pending ? 'Pending' : '-' %></td>
         </tr>
       <% end %>
